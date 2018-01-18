@@ -1,0 +1,58 @@
+.THIS .darkBlue{
+	color: rgb(22, 50, 92);
+}
+
+.THIS .filter{
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 20px !important;
+	margin-bottom: 10px;
+	background-color:#f9fbff;
+}
+
+.THIS .headerPadding{
+	padding-top: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 1%;
+}
+
+.THIS .noResults{
+	padding-top: 30%;
+
+}
+
+.THIS .resultsPadding{
+	padding-top: 14px;
+}
+
+.THIS .searchPadding{
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 16px;
+}
+
+.THIS .searchIcon{
+	margin-top: 3px;
+	margin-bottom: 3px;
+	margin-left: 6px;
+}
+
+.THIS .slds-input{
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 45px;
+}
+
+.THIS .slds-button--neutral{
+	padding-top: 3px !important;
+	padding-bottom: 3px !important;
+	margin-left: 8%;
+}
+
+.THIS .slds-input__icon{
+	margin-left: .4rem;
+	padding-left: .1rem;
+}
+
+

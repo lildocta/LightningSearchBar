@@ -1,0 +1,106 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="ProductInformationSearchBarController">
+	
+	<aura:attribute name="searchResults" type="String[]"/>
+	<aura:attribute name="resultNum" type="String" default="10+"/>
+	<aura:attribute name="hasSearched" type="Boolean" default="false"/>
+	<aura:attribute name="noResults" type="Boolean" default="false"/>
+	<aura:attribute name="filterResults" type="Boolean" default="false"/>
+	<aura:attribute name="countryFilters" type="String[]"/>
+	<aura:attribute name="languageFilters" type="String[]"/>
+	<aura:attribute name="typeFilters" type="String[]"/>
+	<aura:attribute name="divisionFilters" type="String[]"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+
+	<div class="flexipageComponent">
+		<article class="slds-card slds-card_boundary forceBaseCard">
+			<!-- Header Elements -->
+			<div class="headerPadding slds-grid">
+				<div class="slds-media__body">
+					<h2 class="header-title-container">
+						<span class="slds-text-heading--small slds-truncate" title="Product Info">Product Info</span>
+					</h2>
+				</div>
+			</div>
+
+			<!-- Search Elements -->
+			<div class="searchPadding slds-grid slds-wrap">
+				<div class="slds-col">
+					<ui:inputText aura:id="searchInput" placeholder="Search Product Info" keypress="{!c.searchEnter}" updateOn="keypress"/>
+
+				</div>
+				<div>
+					<lightning:buttonIcon aura:id="searchButton" class="searchIcon" iconName="utility:search" variant="border" onclick="{!c.searchButton}" alternativeText="Search" />
+				</div>
+				<div class="slds-col">
+					<lightning:buttonIcon class="searchIcon" iconName="utility:filterList" variant="border" onclick="{!c.toggleFilter}" alternativeText="filter" />
+				</div>
+			</div>
+
+			<!-- Filter Elements -->
+				<aura:if isTrue="{!v.filterResults}">
+					<div class="filter slds-box">
+						<div class="slds-grid slds-m-right_small slds-m-left_xx-small">
+							<div class="slds-col slds-size--1-of-2 slds-m-right_xx-small">
+								<lightning:select aura:id="language" label="Language" name="languageFilter">
+									<aura:iteration items="{!v.languageFilters}" var="language">
+	            						<option value="{!language.value}" text="{!language}"></option>
+	        						</aura:iteration>
+								</lightning:select>
+							</div>
+							<div class="slds-col slds-size--1-of-2">
+								<lightning:select aura:id="country" label="Country" name="countryFilter" >
+									<aura:iteration items="{!v.countryFilters}" var="country">
+	            						<option value="{!country.value}" text="{!country}"></option>
+	        						</aura:iteration>
+								</lightning:select>
+							</div>
+						</div>
+
+						<div class="slds-grid slds-m-right_small slds-m-left_xx-small">
+							<div class="slds-col slds-size--1-of-2 slds-m-right_xx-small">
+								<lightning:select aura:id="type" label="Type" name="typeFilter">
+									<aura:iteration items="{!v.typeFilters}" var="type">
+	            						<option value="{!type.value}" text="{!type}"></option>
+	        						</aura:iteration>
+								</lightning:select>
+							</div>
+							<div class="slds-col slds-size--1-of-2">
+								<lightning:select aura:id="division" label="Division" name="divisionFilter">
+									<aura:iteration items="{!v.divisionFilters}" var="division">
+	            						<option value="{!division.value}" text="{!division}"></option>
+	        						</aura:iteration>
+								</lightning:select>
+							</div>
+						</div>
+					</div>
+				</aura:if>
+
+			<!-- Result Elements -->
+			<div class="slds-card__body slds-card__body--inner">
+				<aura:if isTrue="{!v.noResults}">
+					<img class="slds-size--small slds-align_absolute-center noResults" src="https://3m1--sadev02.lightning.force.com/img/search/no-results.png" label="No Results"/>
+					<div class="slds-text-heading--medium slds-align_absolute-center" style="padding-top:10%;">
+						<p>No Results Found</p>
+					</div>
+				</aura:if>
+				<aura:if isTrue="{!v.hasSearched}">
+					<p class="darkBlue">Search Results</p>
+					<div style="resultsPadding" class="searchResultsSummary slds-text-body--small slds-text-color--weak">
+						<ul class="slds-list_horizontal slds-m-top_small">
+							<li><p>{!v.resultNum} Results Sorted By Relevance</p> </li>
+						</ul>
+					</div>
+				</aura:if>
+				<div class="slds-scrollable" style="max-height: 44rem; min-height: 10rem; width: 100%;">
+					<div class="slds-text-longform" style="width: 100%;">
+						<lightning:spinner variant="brand" size="large" aura:id="mySpinner" class="slds-hide"/>
+							{!v.body}		  
+					</div>
+				</div>
+			</div>
+		</article>
+	</div>
+
+</aura:component>
