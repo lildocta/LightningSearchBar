@@ -136,14 +136,6 @@
                     body.push(div3);
                     component.set("v.body", body);
 		        }
-		        else if (status === "INCOMPLETE") {
-		            console.log("No response from server or client is offline.")
-		            // Show offline error
-		        }
-		        else if (status === "ERROR") {
-		            console.log("Error: " + errorMessage);
-		            // Show error message
-		        }
 		    }
 		);
     },
