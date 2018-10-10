@@ -80,7 +80,7 @@
 			<!-- Result Elements -->
 			<div class="slds-card__body slds-card__body--inner">
 				<aura:if isTrue="{!v.noResults}">
-					<img class="slds-size--small slds-align_absolute-center noResults" src="https://3m1--sadev02.lightning.force.com/img/search/no-results.png" label="No Results"/>
+					<img class="slds-size--small slds-align_absolute-center noResults" src="" label="No Results"/>
 					<div class="slds-text-heading--medium slds-align_absolute-center" style="padding-top:10%;">
 						<p>No Results Found</p>
 					</div>
