@@ -1,6 +1,5 @@
 /*********************** 
 @CreatedDate     12/8/2017
-@Author          Calvin O'Keefe - Slalom
 *********************/
 ({
     doInit : function(component, event, helper){
